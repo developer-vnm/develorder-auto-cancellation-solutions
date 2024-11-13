@@ -1,0 +1,14 @@
+server:
+  shutdown: graceful
+  port: 8081
+
+spring:
+  application:
+    name: order-messaging-service
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: P4ssw@rd
+      connect-timeout: 2000

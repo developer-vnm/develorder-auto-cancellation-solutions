@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: order-service
+
+  data:
+    redis:
+      repositories:
+        enabled: false
+      host: localhost
+      port: 6379
+      password: P4ssw@rd
+      connect-timeout: 2000

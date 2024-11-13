@@ -1,3 +1,7 @@
+server:
+  shutdown: graceful
+  port: 8080
+
 spring:
   application:
     name: order-service
@@ -10,3 +14,11 @@ spring:
       port: 6379
       password: P4ssw@rd
       connect-timeout: 2000
+
+  threads:
+    virtual:
+      enabled: true
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"

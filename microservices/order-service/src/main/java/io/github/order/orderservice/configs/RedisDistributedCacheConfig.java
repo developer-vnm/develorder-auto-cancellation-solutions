@@ -10,11 +10,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.time.Duration;
 import java.util.Map;
@@ -39,17 +36,6 @@ public class RedisDistributedCacheConfig implements CachingConfigurer {
                 .withInitialCacheConfigurations(
                         createCustomCacheConfigurations(Map.of(ORDER_EXPIRATION_CACHE, ORDER_EXPIRATION_TTL)))
                 .build();
-    }
-
-    @Bean
-    public RedisTemplate<String, Object> redisTemplate(final RedisConnectionFactory redisConnectionFactory) {
-
-        var template = new RedisTemplate<String, Object>();
-        template.setConnectionFactory(redisConnectionFactory);
-        template.setKeySerializer(new StringRedisSerializer());
-        template.setValueSerializer(new Jackson2JsonRedisSerializer<>(Object.class));
-
-        return template;
     }
 
     private static Map<String, RedisCacheConfiguration> createCustomCacheConfigurations(final Map<String, Long> specificCacheExpirations) {

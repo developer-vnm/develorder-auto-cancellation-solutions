@@ -1,8 +1,20 @@
 # Order Auto Cancellation Solutions
 
-## Redis Messaging
+## Problem Statement
 
-### Producer
+```
+As a Product Owner,
+I WANT orders to be automatically canceled after X minutes if the customer does not complete payment,
+SO THAT the reserved product becomes available for other customers to purchase.
+```
+
+![Order Auto Cancellation Flow Diagram](flow-diagram.png)
+
+## Solutions
+
+### Redis Messaging
+
+#### Producer
 
 - Usage:
 
@@ -32,7 +44,7 @@ public class OrderCancellationServiceImpl implements OrderCancellationService {
 2024-11-13T13:45:39.376+07:00  INFO [order-service,,] 17228 --- [order-service] [         task-1] i.g.o.o.s.i.OrderCancellationServiceImpl : [application] prepare to store scheduled order cancellation order_id=1731480339373
 ```
 
-### Consumer
+#### Consumer
 
 - Configuration:
 

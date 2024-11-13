@@ -14,6 +14,8 @@ SO THAT the reserved product becomes available for other customers to purchase.
 
 ### Redis Messaging
 
+![Order Auto Cancellation Sequence Diagram](sequence-diagram.png)
+
 #### Producer
 
 - Usage:
